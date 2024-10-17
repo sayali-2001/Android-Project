@@ -1,0 +1,67 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/card_background"
+    android:layout_margin="8dp"
+    android:elevation="2dp">
+
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/gloves" />
+
+    <TextView
+        android:id="@+id/productName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vitamin E capsules"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="8dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/companyName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mercury Medicare,Chennai"
+        android:textSize="14sp"
+        android:paddingTop="4dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chennai, Tamil Nadu"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:paddingTop="4dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/productPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₹30 / Stripe"
+        android:textSize="14sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:paddingTop="4dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/getBestPriceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Best Price"
+        android:layout_marginTop="8dp"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@android:color/white"/>
+</LinearLayout>

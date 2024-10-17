@@ -1,0 +1,54 @@
+<!-- res/drawable/circular_button_background.xml -->
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:shape="oval">-->
+<!--    <solid android:color="@color/darker_gray"/> &lt;!&ndash; Background color &ndash;&gt;-->
+<!--    <size-->
+<!--        android:width="100dp"-->
+<!--        android:height="100dp"/>-->
+<!--    <corners android:radius="32.5dp"/> &lt;!&ndash; Half of width/height for perfect circle &ndash;&gt;-->
+<!--</shape>-->
+<!-- res/drawable/shadow_background.xml -->
+
+
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <item>-->
+<!--        <shape android:shape="oval">-->
+<!--            <solid android:color="#808C8B8B"/> &lt;!&ndash; Shadow color with transparency &ndash;&gt;-->
+<!--            <size-->
+<!--                android:width="110dp"-->
+<!--                android:height="110dp"/>-->
+<!--            <corners android:radius="32.5dp"/>-->
+<!--        </shape>-->
+<!--    </item>-->
+<!--    <item android:left="0dp" android:right="0dp" android:top="0dp" android:bottom="0dp">-->
+<!--        <shape android:shape="oval">-->
+<!--            <solid android:color="@color/cart_color"/> &lt;!&ndash; Background color &ndash;&gt;-->
+<!--            <size-->
+<!--                android:width="100dp"-->
+<!--                android:height="100dp"/>-->
+<!--            <corners android:radius="32.5dp"/>-->
+<!--        </shape>-->
+<!--    </item>-->
+<!--</layer-list>-->
+
+<!-- res/drawable/shadow_background.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#80000000"/> <!-- Shadow color with transparency -->
+            <size
+                android:width="60dp"
+                android:height="60dp"/>
+            <corners android:radius="17.5dp"/> <!-- Half of width/height for perfect circle -->
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#D8DBF2"/> <!-- Grey background color -->
+            <size
+                android:width="35dp"
+                android:height="35dp"/>
+            <corners android:radius="17.5dp"/> <!-- Half of width/height for perfect circle -->
+        </shape>
+    </item>
+</layer-list>

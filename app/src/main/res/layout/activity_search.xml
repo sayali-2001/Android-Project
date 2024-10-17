@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="1dp">
+
+    <!-- Search Bar and Top Icons -->
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="Medizon"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="17dp" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search for products"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Main Content with ScrollView -->
+
+    <ImageButton
+        android:id="@+id/btnLike"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="4dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Add to Cart"
+        android:padding="4dp"
+        android:src="@drawable/like"
+        app:layout_constraintEnd_toStartOf="@id/btnNotification"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnNotification"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="4dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Notification"
+        android:padding="4dp"
+        android:src="@drawable/notification"
+        app:layout_constraintEnd_toStartOf="@id/btnAddToCart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnAddToCart"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="4dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Account"
+        android:padding="4dp"
+        android:src="@drawable/cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Badge showing the item count -->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/cartItemCount"-->
+<!--        android:layout_width="14dp"-->
+<!--        android:layout_height="14dp"-->
+<!--        android:layout_alignTop="@id/btnAddToCart"-->
+<!--        android:layout_alignEnd="@id/btnAddToCart"-->
+<!--        android:background="@drawable/red_circle"-->
+<!--        android:gravity="center"-->
+<!--        android:text="0"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textSize="12sp"-->
+<!--        android:textStyle="bold"-->
+<!--        tools:layout_editor_absoluteX="385dp"-->
+<!--        tools:layout_editor_absoluteY="24dp" />-->
+    <!-- Cart Item Count TextView -->
+    <TextView
+        android:id="@+id/cartItemCount"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:background="@drawable/red_circle"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/btnAddToCart"
+        app:layout_constraintEnd_toEndOf="@id/btnAddToCart"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <ScrollView
+        android:id="@+id/scrollViewContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintBottom_toTopOf="@id/footerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/health_checks_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:paddingStart="16dp"
+            android:text="Categories"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="180dp"
+            android:background="@android:color/transparent"
+            android:text="See All"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+<!--     RecyclerView for Categories Items -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:orientation="horizontal"
+    tools:listitem="@layout/item_categories"
+        android:layout_marginEnd="12dp"/>
+    </LinearLayout>
+<!--    android:scrollbars="horizontal"-->
+
+<!--    <HorizontalScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="10dp"-->
+<!--            android:scrollbars="none">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--&lt;!&ndash;            First Card&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginEnd="12dp">-->
+
+<!--                <ImageButton-->
+<!--                    android:layout_width="60dp"-->
+<!--                    android:layout_height="60dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:background="@drawable/circular_button_background"-->
+
+<!--                    android:padding="4dp"-->
+<!--                    android:src="@drawable/stethoscope"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/btnNotification"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:text="Stethoscope"-->
+<!--                    android:textSize="12sp"/>-->
+<!--            </LinearLayout>-->
+
+
+
+
+
+<!--&lt;!&ndash;            &ndash;&gt;-->
+<!--        </LinearLayout>-->
+<!--        </HorizontalScrollView>-->
+
+
+    <TextView
+        android:id="@+id/suggest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:textStyle="bold"
+        android:text="Top recommendations for you"
+        android:textSize="18sp" />
+
+<!--   Vertical Scroll  View -->
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:scrollbars="vertical" />-->
+
+
+        <!--          Vertical RecyclerView-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerViewVertical"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:scrollbars="vertical"-->
+<!--            android:orientation="vertical"-->
+<!--            tools:listitem="@layout/item_product" />-->
+<!---->
+<!--         Horizontal RecyclerView-->
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerViewRecommended"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:scrollbars="horizontal"-->
+<!--            android:visibility="visible"-->
+<!--            tools:listitem="@layout/item_product"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="1dp">
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@drawable/card_background"
+                android:layout_margin="8dp"
+                android:elevation="2dp">
+
+                <ImageView
+                    android:id="@+id/productImage1"
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+                    android:src="@drawable/cheatle_forceps"
+                    android:scaleType="fitCenter"
+                    />
+
+                <TextView
+                    android:id="@+id/productName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:paddingTop="8dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/companyName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"
+                    android:textSize="14sp"
+                    android:paddingTop="4dp"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/location1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:paddingTop="4dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/productPrice1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingTop="4dp"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/getAddToCart1"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="ADD"
+                    android:layout_gravity="center"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/purple_500"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@drawable/card_background"
+                android:layout_margin="8dp"
+                android:elevation="2dp">
+
+                <ImageView
+                    android:id="@+id/productImage2"
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+                    android:scaleType="fitCenter"
+                    />
+
+                <TextView
+                    android:id="@+id/productName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:paddingTop="8dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/companyName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"
+                    android:textSize="14sp"
+                    android:paddingTop="4dp"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/location2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:paddingTop="4dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/productPrice2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingTop="4dp"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/getAddToCart2"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="ADD"
+                    android:layout_gravity="center"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/purple_500"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="1dp">
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@drawable/card_background"
+                android:layout_margin="8dp"
+                android:elevation="2dp">
+
+                <ImageView
+                    android:id="@+id/productImage3"
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+                    android:scaleType="fitCenter"
+                    />
+
+                <TextView
+                    android:id="@+id/productName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:paddingTop="8dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/companyName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"
+                    android:textSize="14sp"
+                    android:paddingTop="4dp"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/location3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:paddingTop="4dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/productPrice3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingTop="4dp"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/getAddToCart3"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="ADD"
+                    android:layout_gravity="center"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/purple_500"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@drawable/card_background"
+                android:layout_margin="8dp"
+                android:elevation="2dp">
+
+                <ImageView
+                    android:id="@+id/productImage4"
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+                    android:scaleType="fitCenter"
+                    />
+
+                <TextView
+                    android:id="@+id/productName4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:paddingTop="8dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/companyName4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"
+                    android:textSize="14sp"
+                    android:paddingTop="4dp"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/location4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:paddingTop="4dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/productPrice4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textSize="14sp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingTop="4dp"
+                    android:layout_gravity="center"/>
+
+                <Button
+                    android:id="@+id/getAddToCart4"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:text="ADD"
+                    android:layout_gravity="center"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/purple_500"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+        <!-- Product Details Section -->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:padding="8dp">-->
+
+<!--            &lt;!&ndash; Product Details for Forceps &ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Cheatle forceps - SURGICAL INSTRUMENTS 10 INCH Medical · Stainless Steel"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_marginEnd="8dp" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Price: ₹500"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textColor="@android:color/holo_red_dark"-->
+<!--                    android:layout_marginTop="4dp" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/buttonAddToCart"-->
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:text="ADD"-->
+<!--                    android:layout_marginTop="2dp" />-->
+                <!--                    android:background="@drawable/button_background"-->
+
+<!--            </LinearLayout>-->
+
+            <!-- Product Details for Gloves -->
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Latex Surgical Gloves Medical Grade Hand Protection Rubber Glove"-->
+<!--                android:textSize="12sp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:textColor="@android:color/black" />-->
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Price: ₹500"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textColor="@android:color/holo_red_dark"-->
+<!--                    android:layout_marginTop="4dp" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/buttonAddToCart1"-->
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:text="Add"-->
+<!--                android:layout_marginTop="4dp" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+        <!-- New LinearLayout below the existing horizontal layout -->
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="1dp"-->
+<!--            android:layout_marginStart="1dp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="180dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="8dp"-->
+<!--                android:background="@drawable/card_background"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:elevation="2dp">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="155dp"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:src="@drawable/medical_torch" />-->
+
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text=" Torch Light for Doctors"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:paddingTop="8dp"-->
+<!--                    android:layout_gravity="center"/>-->
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Sociosis Productions"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:paddingTop="4dp"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Andheri East, Mumbai"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textColor="@android:color/darker_gray"-->
+<!--                    android:paddingTop="4dp"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:paddingTop="4dp"-->
+<!--                    android:text="₹249 /Piece"-->
+<!--                    android:textColor="@android:color/holo_red_dark"-->
+<!--                    android:textSize="14sp" />-->
+
+<!--                <Button-->
+
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="ADD"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:backgroundTint="@color/purple_500"-->
+<!--                    android:textColor="@android:color/white" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="180dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="8dp"-->
+<!--                android:background="@drawable/card_background"-->
+<!--                android:layout_margin="8dp"-->
+<!--                android:elevation="2dp">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="155dp"-->
+<!--                    android:scaleType="fitCenter"-->
+<!--                    android:src="@drawable/bp_monitors" />-->
+
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Blood Pressure Monitor"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:paddingTop="8dp"-->
+<!--                    android:layout_gravity="center"/>-->
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Prakar Enterprises"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:paddingTop="4dp"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Hyderabad"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textColor="@android:color/darker_gray"-->
+<!--                    android:paddingTop="4dp"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--                <TextView-->
+
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="₹270 /Piece"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:textColor="@android:color/holo_red_dark"-->
+<!--                    android:paddingTop="4dp"-->
+<!--                    android:layout_gravity="center"/>-->
+
+<!--                <Button-->
+
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="ADD"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    android:backgroundTint="@color/purple_500"-->
+<!--                    android:textColor="@android:color/white" />-->
+<!--            </LinearLayout>-->
+
+
+<!--    </LinearLayout>-->
+
+
+
+
+
+</LinearLayout>
+</ScrollView>
+    <!-- After all other content, add RecyclerView before footer -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/scrollViewContent"
+        app:layout_constraintBottom_toTopOf="@id/footerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- Footer at the bottom -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footerLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+<!--medizon-->
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Home"
+            android:padding="8dp"
+            android:src="@drawable/home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="324dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Account"
+            android:padding="8dp"
+            android:src="@drawable/account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/homeButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

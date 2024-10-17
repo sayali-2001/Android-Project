@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Example color definitions -->
+    <color name="link_color">#121212</color> <!-- Link color (Blue) -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#100F0F</color>
+    <color name="gradient_button">#8F20A8</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="cart_color">#FFDDDD</color>
+    <color name="darker_gray">#B1AEAE</color>
+
+</resources>

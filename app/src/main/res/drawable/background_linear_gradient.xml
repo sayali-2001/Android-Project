@@ -1,0 +1,35 @@
+<!-- res/drawable/background_gradient.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow effect -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#00000000"/> <!-- Transparent background for shadow -->
+            <corners android:radius="10dp" />
+            <padding
+                android:left="2dp"
+                android:top="2dp"
+                android:right="2dp"
+                android:bottom="4dp" />
+<!--            <shadow-->
+<!--                android:dx="4"-->
+<!--                android:dy="4"-->
+<!--                android:radius="5"-->
+<!--                android:color="#55000000" />-->
+        </shape>
+    </item>
+
+    <!-- Gradient background -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#E65D89"
+                android:centerColor="#FFC0CB"
+                android:endColor="#E6BBC3"
+                android:angle="45" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+</layer-list>
+<!--    android:startColor="#FFC0CB"-->
+<!--    android:centerColor="#87CEEB"-->
+<!--    android:endColor="#FF1493"-->
